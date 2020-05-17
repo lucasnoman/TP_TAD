@@ -1,4 +1,4 @@
-package Cadastros;
+package dadosDeCadastros;
 
 public class Candidatos {
     private String nome;

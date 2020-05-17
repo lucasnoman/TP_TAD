@@ -1,4 +1,4 @@
-package Cadastros;
+package dadosDeCadastros;
 
 public class Municipios {
     private String nome;

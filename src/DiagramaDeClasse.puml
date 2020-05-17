@@ -1,26 +1,44 @@
 @startuml
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+package "I. Modulo TRE: f)" {
+class Eleitor {
+nome
+numTitulo
+munEleitoral
+zonaEleitoral
+secaoEleitoral
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class Candidatos {
+nome
+numeroCandidato
+municipio
+partido
+cargo
+}
+
+class Urna {
+municipio
+zonaEleitoral
+secaoEleitoral
+}
+
+Class Arquivo1 {
+secaoEleitoral
+numsTitulos
+}
+
+Class Arquivo2 {
+zonaEleitoral
+numeroCandidato
+partido
+cargo
+}
+
+Eleitor - Urna
+(Eleitor, Urna) .. Arquivo1
+(Candidatos, Urna) .. Arquivo2
+
 }
 
 @enduml

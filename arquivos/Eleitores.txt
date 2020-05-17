@@ -1,0 +1,6 @@
+Lucas Calhau Noman; 01234567 02 01; Capelinha; 001; 0110
+Ailton Pedra; 00000001 02 01; Capelinha; 002; 0110
+Marli Banana; 00000002 02 02; Capelinha; 002; 0110
+Reni Sobrenome; 76543210 02 05; Belo Horizonte; 010; 1001
+Nome Sobrenome; 00000003 02 04; Belo Horizonte; 011; 1001
+Serafina Areia; 00000004 02 03; Belo Horizonte; 100; 1001

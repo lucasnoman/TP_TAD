@@ -1,0 +1,2 @@
+Capelinha; 001; 0110
+Belo Horizonte; 010; 1001
