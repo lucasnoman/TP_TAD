@@ -1,4 +1,4 @@
-package cadastroArquivo;
+package arquivos;
 
 import java.io.IOException;
 import java.io.*;
@@ -18,11 +18,11 @@ public class Exportar {
         BufferedReader br2 = new BufferedReader(fr2);
 
         //imprime linha a linha
-        while (br.readLine() != null && br2.readLine() != null) {
-            if () {
-                //buscar a zona eleitoral e todos os eleitores que votarão nela.
-            }
-        }
+//        while (br.readLine() != null && br2.readLine() != null) {
+//            if () {
+//                //buscar a zona eleitoral e todos os eleitores que votarão nela.
+//            }
+//        }
         System.out.println("Quantidade de linhas: " + cont);
         fr.close();
         br.close();

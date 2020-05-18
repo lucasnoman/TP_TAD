@@ -1,7 +1,6 @@
-package leituraArquivo;
+package arquivos;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class Leitura {
     public void lerArquivo(String file) throws IOException {

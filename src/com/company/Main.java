@@ -1,17 +1,18 @@
 package com.company;
-import cadastroArquivo.Cadastro;
-import cadastroArquivo.Exportar;
-import leituraArquivo.Leitura;
+import arquivos.AddArqTAD;
 
 import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Cadastro c = new Cadastro();
+//        AddConteudoArquivo c = new AddConteudoArquivo();
 //        c.escreverPartido();
-        Leitura l = new Leitura();
-        Exportar e = new Exportar();
-        e.exportar();
+//        Leitura l = new Leitura();
+//        Exportar e = new Exportar();
+//        e.exportar();
+
+        AddArqTAD at = new AddArqTAD();
+        at.createADT();
     }
 }

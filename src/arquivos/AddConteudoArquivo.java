@@ -1,9 +1,9 @@
-package cadastroArquivo;
+package arquivos;
 
 import java.util.Scanner;
 import java.io.*;
 
-public class Cadastro {
+public class AddConteudoArquivo {
     public void escreverPartido() throws IOException {
         Scanner sc = new Scanner(System.in);
         File dir = new File("arquivos\\");
@@ -13,7 +13,7 @@ public class Cadastro {
         if (!file.exists())
             file.createNewFile();
 
-        //colocando o segundo argumento como true, eu não sobrescrevo o que já contem no arquivo
+        //colocando o segundo argumento como true, o código não sobrescreve o que já contem no arquivo
         FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
         BufferedWriter bw = new BufferedWriter(fw);
 

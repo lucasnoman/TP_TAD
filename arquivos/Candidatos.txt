@@ -1,11 +1,10 @@
-nome; número; nome do município; sigla do partido politico; cargo a que está se candidatando (“P” ou “V”)
-Fulano; 15; Capelinha; MDB; V
-Beltrano; 45; Capelinha; PSDB; P
-Cicrano; 11; Capelinha; PP; P
-Jose; 12; Capelinha; PDT; V
-Maria; 25; Capelinha; DEM; V
-Fulano; 22; Belo Horizonte; PL; V
-Beltrano; 22; Belo Horizonte; PL; P
-Cicrano; 40; Belo Horizonte; PSB; P
-Jose; 17; Belo Horizonte; PSL; V
-Maria; 20; Belo Horizonte; PSC; V
+Fulano; 15; Capelinha; MG; MDB; V
+Beltrano; 45; Capelinha; MG; PSDB; P
+Cicrano; 11; Capelinha; MG; PP; P
+Jose; 12; Capelinha; MG; PDT; V
+Maria; 25; Capelinha; MG; DEM; V
+Fulano; 22; Belo Horizonte; MG; PL; V
+Beltrano; 22; Belo Horizonte; MG; PL; P
+Cicrano; 40; Belo Horizonte; MG; PSB; P
+Jose; 17; Belo Horizonte; MG; PSL; V
+Maria; 20; Belo Horizonte; MG; PSC; V
