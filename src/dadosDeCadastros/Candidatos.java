@@ -4,24 +4,36 @@ public class Candidatos {
     private String nome;
     private int numero;
     private String municipio;
+    private String estado;
     private String partido;
-    private char cargo;
+    private String cargo;
 
     public Candidatos() {
         nome = "";
         numero = 0;
         municipio = "";
+        estado = "";
         partido = "";
-        cargo = '0';
+        cargo = "";
     }
 
-    public Candidatos(String nome, int numero, String municipio, String partido, char cargo) {
+    public Candidatos(String nome, int numero, String municipio, String estado, String partido, String cargo) {
         this.nome = nome;
         this.numero = numero;
         this.municipio = municipio;
+        this.estado = estado;
         this.partido = partido;
         this.cargo = cargo;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
 
     public String getNome() {
         return nome;
@@ -55,11 +67,11 @@ public class Candidatos {
         this.partido = partido;
     }
 
-    public char getCargo() {
+    public String getCargo() {
         return cargo;
     }
 
-    public void setCargo(char cargo) {
+    public void setCargo(String cargo) {
         this.cargo = cargo;
     }
 }

@@ -22,21 +22,36 @@ public class ListaPartido {
         CelulaPartidos aux;
         aux = primeiro.proximo;
 
-        if (aux == null) {
+        if (listaVazia()) {
             System.out.println("A lista de partidos está vazia");
         } else {
             while (aux != null) {
-                System.out.println("Nome do partido: " + aux.item.getNome() + ", sigla do partido: " + aux.item.getSigla());
+                System.out.println(aux.item.getNome() + " - " + aux.item.getSigla());
                 aux = aux.proximo;
             }
         }
     }
 
     public Boolean listaVazia() {
-        if (primeiro == ultimo) {
-            return true;
-        } else {
-            return false;
+        return primeiro == ultimo;
+    }
+
+    public void concatenar(ListaPartido lista) {
+        ultimo.proximo = lista.ultimo;
+        ultimo = ultimo.proximo;
+    }
+
+    public Partidos localizar(String siglaPartido) {
+        CelulaPartidos aux;
+        aux = primeiro.proximo;
+
+        while (aux != null) {
+            if (aux.item.getSigla().equals(siglaPartido)) {
+                return aux.item;
+            } else {
+                aux = aux.proximo;
+            }
         }
+        return null;
     }
 }

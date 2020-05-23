@@ -1,4 +1,9 @@
-Partido do Lucas; PL
-Partido do Reni; PR
-Partido do Seu Zé; PSZ
-Partido da Maria; PM
+Movimento Democratico Brasileiro; MDB
+Partido da Social Democracia Brasileira; PSDB
+Progressistas; PP
+Partido Democrático Trabalhista; PDT
+Democratas; DEM
+Partido Liberal; PL
+Partido Socialista Brasileiro; PSB
+Partido Social Cristão; PSC
+Partido Social Liberal; PSL

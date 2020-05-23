@@ -1,47 +1,52 @@
 package arquivos;
 
+import dadosDeCadastros.Candidatos;
+import dadosDeCadastros.Eleitores;
 import dadosDeCadastros.Partidos;
+import lista.ListaCandidatos;
 import lista.ListaPartido;
+import lista.ListaEleitores;
 
 import java.io.*;
 
 public class AddArqTAD {
-    public void createADT() throws IOException {
+    public void createADT(String file) throws IOException {
         Partidos p;
-        ListaPartido partido = new ListaPartido();
+        Candidatos c;
+        Eleitores e;
+        ListaPartido partidos = new ListaPartido();
+        ListaCandidatos candidatos = new ListaCandidatos();
+        ListaEleitores eleitores = new ListaEleitores();
         String line;
-        int pos = 0;
 
-        if (partido.listaVazia()) {
-            System.out.println("A lista de partidos está vazia.");
-        }
-
-        FileReader fr = new FileReader("arquivos\\Partidos.txt");
+        FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
 
         //lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER)
         while (true) {
             line = br.readLine();
-            if (line == null) {
+            if (line == null)
                 break;
-            }
             String[] parts = line.split(";\s");
 
-            for (String part : parts) {
-                System.out.println(part);
+//            for (String t : parts) {
+//                System.out.println(t);
+//            }
+
+            if (parts.length == 6) { //Insere Candidatos na lista
+                int parse = Integer.parseInt(parts[1]);
+                c = new Candidatos(parts[0], parse, parts[2], parts[3], parts[4], parts[5]);
+                candidatos.inserirFinal(c);
+            } else if (parts.length == 2) { //Partidos
+                p = new Partidos(parts[0], parts[1]);
+                partidos.inserirFinal(p);
+            } else if (parts.length == 5) { //Eleitores
+                e = new Eleitores(parts[0],parts[1],parts[2],parts[3],parts[4]);
+                eleitores.inserirFinal(e);
             }
         }
         br.close();
 
-
-        /*
-         reservado para após o SPLIT
-         */
-//        p = new Partidos("Teste", "T");
-//        partido.inserirFinal(p);
-//        p = new Partidos("Teste2", "T2");
-//        partido.inserirFinal(p);
-//        System.out.println("Partidos cadastrados:");
-//        partido.imprimir();
+        eleitores.imprimir();
     }
 }

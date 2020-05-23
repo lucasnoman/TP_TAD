@@ -2,7 +2,7 @@ package dadosDeCadastros;
 
 public class Eleitores {
     private String nome;
-    private int numTitulo;
+    private String numTitulo;
     private String munEleitoral;
     private String zonaEleitoral;
     private String secaoEleitoral;
@@ -15,11 +15,11 @@ public class Eleitores {
         this.nome = nome;
     }
 
-    public int getNumTitulo() {
+    public String getNumTitulo() {
         return numTitulo;
     }
 
-    public void setNumTitulo(int numTitulo) {
+    public void setNumTitulo(String numTitulo) {
         this.numTitulo = numTitulo;
     }
 
@@ -49,13 +49,13 @@ public class Eleitores {
 
     public Eleitores() {
         nome = "";
-        numTitulo = 0;
+        numTitulo = "";
         munEleitoral = "";
         zonaEleitoral = "";
         secaoEleitoral = "";
     }
 
-    public Eleitores(String nome, int numTitulo, String munEleitoral, String zonaEleitoral, String secaoEleitoral) {
+    public Eleitores(String nome, String numTitulo, String munEleitoral, String zonaEleitoral, String secaoEleitoral) {
         this.nome = nome;
         this.numTitulo = numTitulo;
         this.munEleitoral = munEleitoral;

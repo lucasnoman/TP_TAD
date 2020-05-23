@@ -7,7 +7,7 @@ public class AddConteudoArquivo {
     public void escreverPartido() throws IOException {
         Scanner sc = new Scanner(System.in);
         File dir = new File("arquivos\\");
-        File file = new File(dir, "Partidos.txt");
+        File file = new File(dir, "Teste.txt");
         String nome, sigla;
 
         if (!file.exists())
