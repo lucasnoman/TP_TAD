@@ -17,11 +17,14 @@ public class Main {
 //        Exportar e = new Exportar();
 //        e.exportar();
 
+        // Essa classe lê o conteúdo do arquivo, faz o split e já coloca dentro da lista (teremos que arrumar isso depois)
         AddArqTAD at = new AddArqTAD();
+        // Apenas indico o caminho do arquivo
         String file = "arquivos\\Eleitores.txt";
+        // Executo tudo (leitura, spli, inserção na TAD)
         at.createADT(file);
 
-        ListaPartido lp = new ListaPartido();
+//        ListaPartido lp = new ListaPartido();
 //        lp.imprimir();
     }
 }

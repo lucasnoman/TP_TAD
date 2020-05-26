@@ -11,6 +11,12 @@ public class Urnas {
         secaoEleitoral = "";
     }
 
+    public Urnas(String municipio, String zonaEleitoral, String secaoEleitoral) {
+        this.municipio = municipio;
+        this.zonaEleitoral = zonaEleitoral;
+        this.secaoEleitoral = secaoEleitoral;
+    }
+
     public String getMunicipio() {
         return municipio;
     }
@@ -32,12 +38,6 @@ public class Urnas {
     }
 
     public void setSecaoEleitoral(String secaoEleitoral) {
-        this.secaoEleitoral = secaoEleitoral;
-    }
-
-    public Urnas(String municipio, String zonaEleitoral, String secaoEleitoral) {
-        this.municipio = municipio;
-        this.zonaEleitoral = zonaEleitoral;
         this.secaoEleitoral = secaoEleitoral;
     }
 }

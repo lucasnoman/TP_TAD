@@ -29,11 +29,13 @@ public class AddArqTAD {
                 break;
             String[] parts = line.split(";\s");
 
+//            foreach só para imprimir o que foi lido do arquivo
 //            for (String t : parts) {
 //                System.out.println(t);
 //            }
 
-            if (parts.length == 6) { //Insere Candidatos na lista
+            //Insere Candidatos na lista
+            if (parts.length == 6) {
                 int parse = Integer.parseInt(parts[1]);
                 c = new Candidatos(parts[0], parse, parts[2], parts[3], parts[4], parts[5]);
                 candidatos.inserirFinal(c);
@@ -41,12 +43,14 @@ public class AddArqTAD {
                 p = new Partidos(parts[0], parts[1]);
                 partidos.inserirFinal(p);
             } else if (parts.length == 5) { //Eleitores
-                e = new Eleitores(parts[0],parts[1],parts[2],parts[3],parts[4]);
+                e = new Eleitores(parts[0], parts[1], parts[2], parts[3], parts[4]);
                 eleitores.inserirFinal(e);
             }
         }
         br.close();
 
+        //por enquanto só está sendo impresso aqui nessa classe
+        partidos.imprimir();
         eleitores.imprimir();
     }
 }
