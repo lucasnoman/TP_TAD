@@ -2,7 +2,7 @@ package arquivos;
 
 import java.io.*;
 
-public class Leitura {
+public class Leitura { // Essa classe apenas lê o arquivo txt. Pensei em usar ela para ler e usar return para chamar em outra classe, mas acho que não rola.
     public void lerArquivo(String file) throws IOException {
         String linha;
 

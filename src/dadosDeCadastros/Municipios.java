@@ -13,6 +13,13 @@ public class Municipios {
         vagasVereador = 0;
     }
 
+    public Municipios(String nome, String estado, int qtHabitantes, int vagasVereador) {
+        this.nome = nome;
+        this.estado = estado;
+        this.qtHabitantes = qtHabitantes;
+        this.vagasVereador = vagasVereador;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -45,10 +52,5 @@ public class Municipios {
         this.vagasVereador = vagasVereador;
     }
 
-    public Municipios(String nome, String estado, int qtHabitantes, int vagasVereador) {
-        this.nome = nome;
-        this.estado = estado;
-        this.qtHabitantes = qtHabitantes;
-        this.vagasVereador = vagasVereador;
-    }
+
 }

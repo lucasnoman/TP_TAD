@@ -7,8 +7,7 @@ public class ListaUrnas {
     private CelulaUrnas ultimo;
 
     public ListaUrnas() {
-        primeiro = new CelulaUrnas();
-        ultimo = primeiro;
+        ultimo = primeiro = new CelulaUrnas();
     }
 
     public void inserirFinal(Urnas p) {

@@ -13,12 +13,10 @@ public class AddConteudoArquivo {
         if (!file.exists())
             file.createNewFile();
 
-        //colocando o segundo argumento como true, o código não sobrescreve o que já contem no arquivo
-        FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
+        FileWriter fw = new FileWriter(file.getAbsoluteFile(), true); // colocando o segundo argumento como true, o código não sobrescreve o que já contem no arquivo
         BufferedWriter bw = new BufferedWriter(fw);
 
-        //isso foi feito só para testar a escrita
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) { //isso foi feito só para testar a escrita
             System.out.println("Nome do partido:");
             nome = sc.nextLine();
             System.out.println("Sigla do partido:");
