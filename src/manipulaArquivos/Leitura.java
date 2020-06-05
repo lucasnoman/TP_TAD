@@ -1,4 +1,4 @@
-package arquivos;
+package manipulaArquivos;
 
 import java.io.*;
 

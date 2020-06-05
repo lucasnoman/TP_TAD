@@ -1,7 +1,4 @@
-package arquivos;
-
-import dadosDeCadastros.Candidatos;
-import lista.ListaCandidatos;
+package manipulaArquivos;
 
 import java.io.IOException;
 import java.io.*;

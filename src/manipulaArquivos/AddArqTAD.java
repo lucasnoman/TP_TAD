@@ -1,4 +1,4 @@
-package arquivos;
+package manipulaArquivos;
 
 import dadosDeCadastros.*;
 import lista.*;
@@ -23,14 +23,18 @@ public class AddArqTAD {
         String[] parts;
         FileReader fr;
         BufferedReader br;
+        FileWriter fw;
+        BufferedWriter bw;
+
 
         /* ##### Inserir CANDIDATOS na lista ##### */ //DONE
-        String file = "arquivos\\Candidatos.txt";
-        fr = new FileReader(file);
+        String fileName = "arquivos\\Candidatos.txt";
+        fr = new FileReader(fileName);
         br = new BufferedReader(fr);
         Candidatos c;
         ListaCandidatos candidatos = new ListaCandidatos();
-        while (true) { //lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER). Isso se repeta para todos os arquivos txt abaixo  DONE
+//        Lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER). Isso se repete para todos os arquivos txt abaixo  DONE
+        while (true) {
             line = br.readLine();
             if (line == null)
                 break;
@@ -44,14 +48,15 @@ public class AddArqTAD {
             c = new Candidatos(parts[0], parse, parts[2], parts[3], parts[4], parts[5]);
             candidatos.inserirFinal(c);
         }
+        br.close();
 
         /* ##### Inserir ELEITORES na lista ##### */ //DONE
-        file = "arquivos\\Eleitores.txt";
-        fr = new FileReader(file);
+        fileName = "arquivos\\Eleitores.txt";
+        fr = new FileReader(fileName);
         br = new BufferedReader(fr);
         Eleitores e;
         ListaEleitores eleitores = new ListaEleitores();
-        while (true) { //lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER)
+        while (true) {
             line = br.readLine();
             if (line == null)
                 break;
@@ -60,14 +65,15 @@ public class AddArqTAD {
             e = new Eleitores(parts[0], parts[1], parts[2], parts[3], parts[4]);
             eleitores.inserirFinal(e);
         }
+        br.close();
 
         /* ##### Inserir MUNICIPIOS na lista ##### */ //DONE
-        file = "arquivos\\Municipios.txt";
-        fr = new FileReader(file);
+        fileName = "arquivos\\Municipios.txt";
+        fr = new FileReader(fileName);
         br = new BufferedReader(fr);
         Municipios m;
         ListaMunicipios municipios = new ListaMunicipios();
-        while (true) { //lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER)
+        while (true) {
             line = br.readLine();
             if (line == null)
                 break;
@@ -78,14 +84,15 @@ public class AddArqTAD {
             m = new Municipios(parts[0], parts[1], parse, parse2);
             municipios.inserirFinal(m);
         }
+        br.close();
 
         /* ##### Inserir PARTIDOS na lista ##### */ //DONE
-        file = "arquivos\\Partidos.txt";
-        fr = new FileReader(file);
+        fileName = "arquivos\\Partidos.txt";
+        fr = new FileReader(fileName);
         br = new BufferedReader(fr);
         Partidos p;
         ListaPartido partidos = new ListaPartido();
-        while (true) { //lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER)
+        while (true) {
             line = br.readLine();
             if (line == null)
                 break;
@@ -94,14 +101,17 @@ public class AddArqTAD {
             p = new Partidos(parts[0], parts[1]);
             partidos.inserirFinal(p);
         }
+        br.close();
 
         /* ##### Inserir URNAS na lista ##### */ //DONE
-        file = "arquivos\\Urnas.txt";
-        fr = new FileReader(file);
+        fileName = "arquivos\\Urnas.txt";
+        fr = new FileReader(fileName);
         br = new BufferedReader(fr);
         Urnas u;
         ListaUrnas urnas = new ListaUrnas();
-        while (true) { //lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER)
+        String juntar;
+//        Lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER)
+        while (true) {
             line = br.readLine();
             if (line == null)
                 break;
@@ -109,6 +119,27 @@ public class AddArqTAD {
 
             u = new Urnas(parts[0], parts[1], parts[2]);
             urnas.inserirFinal(u);
+
+
+            /* A partir daqui começa a exportação das urnas. Uma urna por arquivo. */
+            juntar = parts[0] + "; " + parts[1] + "; " + parts[2];
+//            Tamanho da lista de urnas
+            int lengthUrna = urnas.tamLista();
+
+            for (int i = 0; i < lengthUrna; i++) {
+//                Vai criando arquivos txt até o final do loop
+                File newFile = new File("arquivos\\ExportarUrnas" + i + ".txt");
+
+//                Verifica a existência do arquivo
+                try {
+                    if (newFile.createNewFile()) {
+                        fw = new FileWriter(newFile.getAbsoluteFile(), true);
+                        bw = new BufferedWriter(fw);
+                    }
+                } catch (Exception ex) {
+                    System.out.println("Deu ruim: " + ex);
+                }
+            }
         }
         br.close();
 
@@ -142,6 +173,9 @@ public class AddArqTAD {
 //        }
 //        FileWriter fw = new FileWriter(archive.getAbsoluteFile());
 //        BufferedWriter bw = new BufferedWriter(fw);
+
+
+
 
         /*
          * A ideia aqui era buscar na lista uma urna, criar um arquivo com os dados dela

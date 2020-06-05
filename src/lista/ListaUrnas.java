@@ -53,4 +53,15 @@ public class ListaUrnas {
         }
         return null;
     }
+
+    /* Conta a quantidade de registro de Urnas */
+    public int tamLista(){
+        int cont = 0;
+        CelulaUrnas aux = primeiro.proximo;
+        while (aux != null){
+            cont++;
+            aux = aux.proximo;
+        }
+        return cont;
+    }
 }

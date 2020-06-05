@@ -1,4 +1,4 @@
-package arquivos;
+package manipulaArquivos;
 
 import java.util.Scanner;
 import java.io.*;
@@ -13,7 +13,8 @@ public class AddConteudoArquivo {
         if (!file.exists())
             file.createNewFile();
 
-        FileWriter fw = new FileWriter(file.getAbsoluteFile(), true); // colocando o segundo argumento como true, o código não sobrescreve o que já contem no arquivo
+//        Colocando o segundo argumento como true, o código não sobrescreve o que já contem no arquivo
+        FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
         BufferedWriter bw = new BufferedWriter(fw);
 
         for (int i = 0; i < 2; i++) { //isso foi feito só para testar a escrita
