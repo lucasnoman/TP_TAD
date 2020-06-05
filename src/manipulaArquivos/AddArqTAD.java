@@ -33,8 +33,7 @@ public class AddArqTAD {
         br = new BufferedReader(fr);
         Candidatos c;
         ListaCandidatos candidatos = new ListaCandidatos();
-//        Lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER). Isso se repete para todos os arquivos txt abaixo  DONE
-        while (true) {
+        while (true) { // Lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER). Isso se repete para todos os arquivos txt abaixo  DONE
             line = br.readLine();
             if (line == null)
                 break;
@@ -110,8 +109,8 @@ public class AddArqTAD {
         Urnas u;
         ListaUrnas urnas = new ListaUrnas();
         String juntar;
-//        Lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER)
-        while (true) {
+        int i = 0;
+        while (true) { // Lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER)
             line = br.readLine();
             if (line == null)
                 break;
@@ -121,27 +120,24 @@ public class AddArqTAD {
             urnas.inserirFinal(u);
 
 
-            /* A partir daqui começa a exportação das urnas. Uma urna por arquivo. */
+            /* ############# Exportação de urnas por arquivo ############# */
             juntar = parts[0] + "; " + parts[1] + "; " + parts[2];
-//            Tamanho da lista de urnas
-            int lengthUrna = urnas.tamLista();
+            File exportarUrnas = new File("arquivos\\ExportarUrnas" + i + ".txt"); //Cria 1 arquivo por volta no loop
 
-            for (int i = 0; i < lengthUrna; i++) {
-//                Vai criando arquivos txt até o final do loop
-                File newFile = new File("arquivos\\ExportarUrnas" + i + ".txt");
+            if (!exportarUrnas.exists())
+                exportarUrnas.createNewFile();
 
-//                Verifica a existência do arquivo
-                try {
-                    if (newFile.createNewFile()) {
-                        fw = new FileWriter(newFile.getAbsoluteFile(), true);
-                        bw = new BufferedWriter(fw);
-                    }
-                } catch (Exception ex) {
-                    System.out.println("Deu ruim: " + ex);
-                }
-            }
+            fw = new FileWriter(exportarUrnas.getAbsoluteFile(), true); //O segundo argumento (true) permite que escrevamos no arquivo sem sobrescrever o que já tem lá.
+            bw = new BufferedWriter(fw);
+            bw.write(juntar); // Escreve no arquivo
+            bw.newLine(); // Usa o "enter" para quebra de linha após escrever
+            bw.close();
+            i++;
         }
         br.close();
+
+
+
 
         /* Trecho que imprime as listas */ //DONE
 //        int op;
@@ -163,24 +159,5 @@ public class AddArqTAD {
 //                }
 //            }
 //        } while (op != 0);
-
-
-        /* Exportar conteúdo */ //TODO
-//        File archive = new File("arquivos\\ExportUrnas.txt"); // Cria o arquivo novo. Temos que colocar isso para iterar e criar um nome novo a cada vez que busca uma urna nova. TODO
-//
-//        if (!archive.exists()) { // Verifica se o arquivo existe, se não, cria ele.
-//            archive.createNewFile();
-//        }
-//        FileWriter fw = new FileWriter(archive.getAbsoluteFile());
-//        BufferedWriter bw = new BufferedWriter(fw);
-
-
-
-
-        /*
-         * A ideia aqui era buscar na lista uma urna, criar um arquivo com os dados dela
-         * e procurar todos os eleitores que votam nessa urna e colocar no mesmo arquivo
-         * */
-
     }
 }
