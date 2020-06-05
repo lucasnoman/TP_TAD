@@ -54,4 +54,30 @@ public class ListaEleitores {
         }
         return null;
     }
+
+    public ListaEleitores comparaUrnas(String municipio, String zonaEleitoral, String secaoEleitoral) {
+        CelulaEleitores aux;
+        aux = primeiro.proximo;
+        ListaEleitores aux2 = new ListaEleitores();
+
+        while (aux != null) {
+            if (aux.item.getMunEleitoral().equals(municipio) && aux.item.getZonaEleitoral().equals(zonaEleitoral) && aux.item.getSecaoEleitoral().equals(secaoEleitoral)) {
+                aux2.inserirFinal(aux.item);
+                aux = aux.proximo;
+            } else {
+                aux = aux.proximo;
+            }
+        }
+        return aux2;
+    }
+
+    public int tamLista() {
+        int cont = 0;
+        CelulaEleitores aux = primeiro.proximo;
+        while (aux != null) {
+            cont++;
+            aux = aux.proximo;
+        }
+        return cont;
+    }
 }

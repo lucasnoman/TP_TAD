@@ -27,13 +27,13 @@ public class AddArqTAD {
         BufferedWriter bw;
 
 
-        /* ##### Inserir CANDIDATOS na lista ##### */ //DONE
+        /* ##### Inserir CANDIDATOS na lista ##### */
         String fileName = "arquivos\\Candidatos.txt";
         fr = new FileReader(fileName);
         br = new BufferedReader(fr);
         Candidatos c;
-        ListaCandidatos candidatos = new ListaCandidatos();
-        while (true) { // Lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER). Isso se repete para todos os arquivos txt abaixo  DONE
+        ListaCandidatos listaCandidatos = new ListaCandidatos();
+        while (true) { // Lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER). Isso se repete para todos os arquivos txt abaixo
             line = br.readLine();
             if (line == null)
                 break;
@@ -45,16 +45,16 @@ public class AddArqTAD {
 
             int parse = Integer.parseInt(parts[1]);
             c = new Candidatos(parts[0], parse, parts[2], parts[3], parts[4], parts[5]);
-            candidatos.inserirFinal(c);
+            listaCandidatos.inserirFinal(c);
         }
         br.close();
 
-        /* ##### Inserir ELEITORES na lista ##### */ //DONE
+        /* ##### Inserir ELEITORES na lista ##### */
         fileName = "arquivos\\Eleitores.txt";
         fr = new FileReader(fileName);
         br = new BufferedReader(fr);
         Eleitores e;
-        ListaEleitores eleitores = new ListaEleitores();
+        ListaEleitores listaEleitores = new ListaEleitores();
         while (true) {
             line = br.readLine();
             if (line == null)
@@ -62,16 +62,16 @@ public class AddArqTAD {
             parts = line.split(";\s");
 
             e = new Eleitores(parts[0], parts[1], parts[2], parts[3], parts[4]);
-            eleitores.inserirFinal(e);
+            listaEleitores.inserirFinal(e);
         }
         br.close();
 
-        /* ##### Inserir MUNICIPIOS na lista ##### */ //DONE
+        /* ##### Inserir MUNICIPIOS na lista ##### */
         fileName = "arquivos\\Municipios.txt";
         fr = new FileReader(fileName);
         br = new BufferedReader(fr);
         Municipios m;
-        ListaMunicipios municipios = new ListaMunicipios();
+        ListaMunicipios listaMunicipios = new ListaMunicipios();
         while (true) {
             line = br.readLine();
             if (line == null)
@@ -81,16 +81,16 @@ public class AddArqTAD {
             int parse = Integer.parseInt(parts[3]);
             int parse2 = Integer.parseInt(parts[2]);
             m = new Municipios(parts[0], parts[1], parse, parse2);
-            municipios.inserirFinal(m);
+            listaMunicipios.inserirFinal(m);
         }
         br.close();
 
-        /* ##### Inserir PARTIDOS na lista ##### */ //DONE
+        /* ##### Inserir PARTIDOS na lista ##### */
         fileName = "arquivos\\Partidos.txt";
         fr = new FileReader(fileName);
         br = new BufferedReader(fr);
         Partidos p;
-        ListaPartido partidos = new ListaPartido();
+        ListaPartido listaPartidos = new ListaPartido();
         while (true) {
             line = br.readLine();
             if (line == null)
@@ -98,16 +98,16 @@ public class AddArqTAD {
             parts = line.split(";\s");
 
             p = new Partidos(parts[0], parts[1]);
-            partidos.inserirFinal(p);
+            listaPartidos.inserirFinal(p);
         }
         br.close();
 
-        /* ##### Inserir URNAS na lista ##### */ //DONE
+        /* ##### Inserir URNAS na lista ##### */
         fileName = "arquivos\\Urnas.txt";
         fr = new FileReader(fileName);
         br = new BufferedReader(fr);
         Urnas u;
-        ListaUrnas urnas = new ListaUrnas();
+        ListaUrnas listaUrnas = new ListaUrnas();
         String juntar;
         int i = 0;
         while (true) { // Lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER)
@@ -117,29 +117,36 @@ public class AddArqTAD {
             parts = line.split(";\s");
 
             u = new Urnas(parts[0], parts[1], parts[2]);
-            urnas.inserirFinal(u);
+            listaUrnas.inserirFinal(u);
 
 
-            /* ############# Exportação de urnas por arquivo ############# */
-            juntar = parts[0] + "; " + parts[1] + "; " + parts[2];
-            File exportarUrnas = new File("arquivos\\ExportarUrnas" + i + ".txt"); //Cria 1 arquivo por volta no loop
+            /* ############# Exportação de listaUrnas por arquivo ############# */
+//            juntar = parts[0] + "; " + parts[1] + "; " + parts[2];
+//            File exportarUrnas = new File("arquivos\\ExportarUrnas" + i + ".txt"); //Cria 1 arquivo por volta no loop
+//
+//            if (!exportarUrnas.exists())
+//                exportarUrnas.createNewFile();
+//
+//            fw = new FileWriter(exportarUrnas.getAbsoluteFile(), true); //O segundo argumento (true) permite que escrevamos no arquivo sem sobrescrever o que já tem lá.
+//            bw = new BufferedWriter(fw);
+//            bw.write(juntar); // Escreve no arquivo
+//            bw.newLine(); // Usa o "enter" para quebra de linha após escrever
+//            #####################################################################################
 
-            if (!exportarUrnas.exists())
-                exportarUrnas.createNewFile();
+            ListaEleitores recebe = listaEleitores.comparaUrnas(parts[0], parts[1], parts[2]);
+            recebe.imprimir();
 
-            fw = new FileWriter(exportarUrnas.getAbsoluteFile(), true); //O segundo argumento (true) permite que escrevamos no arquivo sem sobrescrever o que já tem lá.
-            bw = new BufferedWriter(fw);
-            bw.write(juntar); // Escreve no arquivo
-            bw.newLine(); // Usa o "enter" para quebra de linha após escrever
-            bw.close();
-            i++;
+//            ListaEleitores recebe = listaEleitores.comparaUrnas("Belo Horizonte", "010", "1001");
+
+//            bw.close();
+//            i++;
         }
         br.close();
 
 
 
 
-        /* Trecho que imprime as listas */ //DONE
+        /* Trecho que imprime as listas */
 //        int op;
 //        do {
 //            System.out.println();
@@ -147,11 +154,11 @@ public class AddArqTAD {
 //            System.out.println();
 //            op = Integer.parseInt(sc.nextLine());
 //            switch (op) {
-//                case 1 -> candidatos.imprimir();
-//                case 2 -> eleitores.imprimir();
-//                case 3 -> municipios.imprimir();
-//                case 4 -> partidos.imprimir();
-//                case 5 -> urnas.imprimir();
+//                case 1 -> listaCandidatos.imprimir();
+//                case 2 -> listaEleitores.imprimir();
+//                case 3 -> listaMunicipios.imprimir();
+//                case 4 -> listaPartidos.imprimir();
+//                case 5 -> listaUrnas.imprimir();
 //                case 0 -> System.out.println("");
 //                default -> {
 //                    System.out.println("Opção inválida.\nDigite novamente.");
