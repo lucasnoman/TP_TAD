@@ -88,7 +88,7 @@ public class ListaEleitores {
         CelulaEleitores aux = lista.primeiro;
 
         while (aux != null) {
-            bw.write(aux.item.getNumTitulo());
+            bw.write(aux.item.getNumTitulo()); // escreve o
             aux = aux.proximo;
             bw.newLine();
         }

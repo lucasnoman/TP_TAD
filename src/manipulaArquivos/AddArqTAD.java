@@ -131,9 +131,9 @@ public class AddArqTAD {
             fw = new FileWriter(exportarUrnas.getAbsoluteFile(), true); //O segundo argumento (true) permite que escrevamos no arquivo sem sobrescrever o que já tem lá.
             bw = new BufferedWriter(fw);
             bw.write(juntar); // Escreve no arquivo
-            bw.newLine(); // Usa o "enter" para quebra de linha após escrever
+//            bw.newLine(); // comentado, pois estava pulando uma linha a mais no "ExportarUrnas*.txt"
             bw.close();
-//            #####################################################################################
+            /* ############# Fim exportação de listaUrnas por arquivo ############# */
 
             ListaEleitores novaLista = listaEleitores.insereListaUrnaEleitor(parts[0], parts[1], parts[2]); //dentro de ListaEleitores, fazer um método que recebe essa "novaLista" e o "exportarUrnas" como parâmetro e adicionar tudo no arquivo
             novaLista.exportaArquivo(novaLista, exportarUrnas);
