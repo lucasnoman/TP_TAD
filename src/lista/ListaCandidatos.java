@@ -2,6 +2,8 @@ package lista;
 
 import dadosDeCadastros.Candidatos;
 
+import java.io.*;
+
 public class ListaCandidatos {
     private CelulaCandidatos primeiro;
     private CelulaCandidatos ultimo;
@@ -53,5 +55,32 @@ public class ListaCandidatos {
             }
         }
         return null;
+    }
+
+    public ListaCandidatos insereListaMunCand(String municipio, String estado) {
+        CelulaCandidatos aux = primeiro.proximo;
+        ListaCandidatos lista = new ListaCandidatos();
+
+        while (aux != null) {
+            if (aux.item.getMunicipio().equals(municipio) && aux.item.getEstado().equals(estado)) {
+                lista.inserirFinal(aux.item);
+            }
+            aux = aux.proximo;
+        }
+        return lista;
+    }
+
+    public void exportaArquivo(ListaCandidatos lista, File file) throws IOException {
+        FileWriter fw = new FileWriter(file, true);
+        PrintWriter pw = new PrintWriter(fw);
+        CelulaCandidatos aux = lista.primeiro.proximo;
+        pw.println(""); //pula a primeira linha que já tem os dados da cidade
+
+        while (aux != null) {
+            String recebe = aux.item.getNome() + "; " + aux.item.getNumero() + "; " + aux.item.getMunicipio() + "; " + aux.item.getEstado() + "; " + aux.item.getPartido() + "; " + aux.item.getCargo();
+            pw.println(recebe); // escreve no arquivo os dados dos candidatos
+            aux = aux.proximo;
+        }
+        pw.close();
     }
 }

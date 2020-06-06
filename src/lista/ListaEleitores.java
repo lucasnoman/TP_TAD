@@ -72,16 +72,6 @@ public class ListaEleitores {
         return lista;
     }
 
-    public int tamLista() {
-        int cont = 0;
-        CelulaEleitores aux = primeiro.proximo;
-        while (aux != null) {
-            cont++;
-            aux = aux.proximo;
-        }
-        return cont;
-    }
-
     public void exportaArquivo(ListaEleitores lista, File file) throws IOException {
         FileWriter fw = new FileWriter(file, true);
         BufferedWriter bw = new BufferedWriter(fw);
