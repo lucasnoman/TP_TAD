@@ -2,6 +2,8 @@ package lista;
 
 import dadosDeCadastros.Eleitores;
 
+import java.io.*;
+
 public class ListaEleitores {
     private CelulaEleitores primeiro;
     private CelulaEleitores ultimo;
@@ -55,20 +57,19 @@ public class ListaEleitores {
         return null;
     }
 
-    public ListaEleitores comparaUrnas(String municipio, String zonaEleitoral, String secaoEleitoral) {
-        CelulaEleitores aux;
-        aux = primeiro.proximo;
-        ListaEleitores aux2 = new ListaEleitores();
+    public ListaEleitores insereListaUrnaEleitor(String municipio, String zonaEleitoral, String secaoEleitoral) {
+        CelulaEleitores aux = primeiro.proximo;
+        ListaEleitores lista = new ListaEleitores();
 
         while (aux != null) {
             if (aux.item.getMunEleitoral().equals(municipio) && aux.item.getZonaEleitoral().equals(zonaEleitoral) && aux.item.getSecaoEleitoral().equals(secaoEleitoral)) {
-                aux2.inserirFinal(aux.item);
+                lista.inserirFinal(aux.item);
                 aux = aux.proximo;
             } else {
                 aux = aux.proximo;
             }
         }
-        return aux2;
+        return lista;
     }
 
     public int tamLista() {
@@ -79,5 +80,18 @@ public class ListaEleitores {
             aux = aux.proximo;
         }
         return cont;
+    }
+
+    public void exportaArquivo(ListaEleitores lista, File file) throws IOException {
+        FileWriter fw = new FileWriter(file, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        CelulaEleitores aux = lista.primeiro;
+
+        while (aux != null) {
+            bw.write(aux.item.getNumTitulo());
+            aux = aux.proximo;
+            bw.newLine();
+        }
+        bw.close();
     }
 }

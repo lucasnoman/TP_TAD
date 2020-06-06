@@ -121,25 +121,23 @@ public class AddArqTAD {
 
 
             /* ############# Exportação de listaUrnas por arquivo ############# */
-//            juntar = parts[0] + "; " + parts[1] + "; " + parts[2];
-//            File exportarUrnas = new File("arquivos\\ExportarUrnas" + i + ".txt"); //Cria 1 arquivo por volta no loop
-//
-//            if (!exportarUrnas.exists())
-//                exportarUrnas.createNewFile();
-//
-//            fw = new FileWriter(exportarUrnas.getAbsoluteFile(), true); //O segundo argumento (true) permite que escrevamos no arquivo sem sobrescrever o que já tem lá.
-//            bw = new BufferedWriter(fw);
-//            bw.write(juntar); // Escreve no arquivo
-//            bw.newLine(); // Usa o "enter" para quebra de linha após escrever
+            juntar = parts[0] + "; " + parts[1] + "; " + parts[2];
+            File exportarUrnas = new File("arquivos\\ExportarUrnas" + i + ".txt"); //Cria 1 arquivo por volta no loop
+            String nome = exportarUrnas.toString();
+
+            if (!exportarUrnas.exists())
+                exportarUrnas.createNewFile();
+
+            fw = new FileWriter(exportarUrnas.getAbsoluteFile(), true); //O segundo argumento (true) permite que escrevamos no arquivo sem sobrescrever o que já tem lá.
+            bw = new BufferedWriter(fw);
+            bw.write(juntar); // Escreve no arquivo
+            bw.newLine(); // Usa o "enter" para quebra de linha após escrever
+            bw.close();
 //            #####################################################################################
 
-            ListaEleitores recebe = listaEleitores.comparaUrnas(parts[0], parts[1], parts[2]);
-            recebe.imprimir();
-
-//            ListaEleitores recebe = listaEleitores.comparaUrnas("Belo Horizonte", "010", "1001");
-
-//            bw.close();
-//            i++;
+            ListaEleitores novaLista = listaEleitores.insereListaUrnaEleitor(parts[0], parts[1], parts[2]); //dentro de ListaEleitores, fazer um método que recebe essa "novaLista" e o "exportarUrnas" como parâmetro e adicionar tudo no arquivo
+            novaLista.exportaArquivo(novaLista, exportarUrnas);
+            i++;
         }
         br.close();
 
