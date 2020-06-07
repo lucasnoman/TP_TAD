@@ -6,6 +6,34 @@ public class Eleitores {
     private String munEleitoral;
     private String zonaEleitoral;
     private String secaoEleitoral;
+    private String status;
+
+    public Eleitores() {
+        nome = "";
+        numTitulo = "";
+        munEleitoral = "";
+        zonaEleitoral = "";
+        secaoEleitoral = "";
+    }
+
+    public Eleitores(String nome, String numTitulo, String munEleitoral, String zonaEleitoral, String secaoEleitoral) {
+        this.nome = nome;
+        this.numTitulo = numTitulo;
+        this.munEleitoral = munEleitoral;
+        this.zonaEleitoral = zonaEleitoral;
+        this.secaoEleitoral = secaoEleitoral;
+    }
+
+    public Eleitores(String numTitulo) {
+        this.numTitulo = numTitulo;
+        status = "A";//No inicio, todos ainda estão 'A' - ausentes
+        //quem tiver votado irá ganhar 'V', e quem justificar , vai ganhar um "J"
+    }
+
+    public Eleitores(String numTitulo, String status) {
+        this.numTitulo = numTitulo;
+        this.status = status;
+    }
 
     public String getNome() {
         return nome;
@@ -44,22 +72,6 @@ public class Eleitores {
     }
 
     public void setSecaoEleitoral(String secaoEleitoral) {
-        this.secaoEleitoral = secaoEleitoral;
-    }
-
-    public Eleitores() {
-        nome = "";
-        numTitulo = "";
-        munEleitoral = "";
-        zonaEleitoral = "";
-        secaoEleitoral = "";
-    }
-
-    public Eleitores(String nome, String numTitulo, String munEleitoral, String zonaEleitoral, String secaoEleitoral) {
-        this.nome = nome;
-        this.numTitulo = numTitulo;
-        this.munEleitoral = munEleitoral;
-        this.zonaEleitoral = zonaEleitoral;
         this.secaoEleitoral = secaoEleitoral;
     }
 }

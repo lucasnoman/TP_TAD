@@ -17,6 +17,11 @@ public class Urnas {
         this.secaoEleitoral = secaoEleitoral;
     }
 
+    @Override
+    public String toString() {
+        return "Urna [municipio= " + municipio + ", secaoEleitoral= " + secaoEleitoral + ", zonaEleitoral= " + zonaEleitoral + "]";
+    }
+
     public String getMunicipio() {
         return municipio;
     }

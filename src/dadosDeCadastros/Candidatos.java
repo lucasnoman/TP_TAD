@@ -7,6 +7,7 @@ public class Candidatos {
     private String estado;
     private String partido;
     private String cargo;
+    private int totalVotos;
 
     public Candidatos() {
         nome = "";
@@ -26,6 +27,14 @@ public class Candidatos {
         this.cargo = cargo;
     }
 
+    public Candidatos(String nome, int numero, String partido, String cargo) {
+        this.nome = nome;
+        this.numero = numero;
+        this.partido = partido;
+        this.cargo = cargo;
+        totalVotos = 0;
+    }
+
     public String getEstado() {
         return estado;
     }
@@ -33,7 +42,6 @@ public class Candidatos {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-
 
     public String getNome() {
         return nome;
@@ -73,5 +81,13 @@ public class Candidatos {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
+    }
+
+    public int getTotalVotos() {
+        return totalVotos;
+    }
+
+    public void setTotalVotos(int totalVotos) {
+        this.totalVotos = totalVotos;
     }
 }

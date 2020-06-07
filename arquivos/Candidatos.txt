@@ -1,10 +1,10 @@
-Fulano; 15; Capelinha; MG; MDB; V
-Beltrano; 45; Capelinha; MG; PSDB; P
-Cicrano; 11; Capelinha; MG; PP; P
-Jose; 12; Capelinha; MG; PDT; V
-Maria; 25; Capelinha; MG; DEM; V
-Fulano; 22; Belo Horizonte; MG; PL; V
-Beltrano; 22; Belo Horizonte; MG; PL; P
-Cicrano; 40; Belo Horizonte; MG; PSB; P
-Jose; 17; Belo Horizonte; MG; PSL; V
-Maria; 20; Belo Horizonte; MG; PSC; V
+Cand1CAP; 15; Capelinha; MG; MDB; V
+Cand2CAP; 45; Capelinha; MG; PSDB; P
+Cand3CAP; 11; Capelinha; MG; PP; P
+Cand4CAP; 12; Capelinha; MG; PDT; V
+Cand5CAP; 25; Capelinha; MG; DEM; V
+Cand1BH; 22; Belo Horizonte; MG; PL; V
+Cand2BH; 22; Belo Horizonte; MG; PL; P
+Cand3BH; 40; Belo Horizonte; MG; PSB; P
+Cand4BH; 17; Belo Horizonte; MG; PSL; V
+Cand5BH; 20; Belo Horizonte; MG; PSC; V

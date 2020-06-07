@@ -1,0 +1,6 @@
+Belo Horizonte; MG; 1430000; 41
+Cand1BH; 22; PL; V
+Cand2BH; 22; PL; P
+Cand3BH; 40; PSB; P
+Cand4BH; 17; PSL; V
+Cand5BH; 20; PSC; V

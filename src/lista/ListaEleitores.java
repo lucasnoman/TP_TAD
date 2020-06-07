@@ -43,7 +43,7 @@ public class ListaEleitores {
         ultimo = ultimo.proximo;
     }
 
-    public Eleitores localizar(int numTitulo) {
+    public Eleitores localizar(String numTitulo) {
         CelulaEleitores aux;
         aux = primeiro.proximo;
 
@@ -78,7 +78,7 @@ public class ListaEleitores {
         CelulaEleitores aux = lista.primeiro;
 
         while (aux != null) {
-            bw.write(aux.item.getNumTitulo()); // escreve o
+            bw.write(aux.item.getNumTitulo());
             aux = aux.proximo;
             bw.newLine();
         }
