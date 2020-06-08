@@ -5,15 +5,14 @@ import lista.*;
 
 import java.io.*;
 
-@SuppressWarnings("ALL")
 public class AddArqTAD {
-    private File dirExportar = new File("arquivos\\exportar");
-    private File dirGeral = new File("arquivos");
-    private String fileCandidatos = "Candidatos.txt";
-    private String fileEleitores = "Eleitores.txt";
-    private String fileMunicipios = "Municipios.txt";
-    private String filePartidos = "Candidatos.txt";
-    private String fileUrnas = "Urnas.txt";
+    final File dirExportar = new File("arquivos\\exportar");
+    final File dirGeral = new File("arquivos");
+    final String fileCandidatos = "Candidatos.txt";
+    final String fileEleitores = "Eleitores.txt";
+    final String fileMunicipios = "Municipios.txt";
+    final String filePartidos = "Candidatos.txt";
+    final String fileUrnas = "Urnas.txt";
 
     /* ##### Inserir CANDIDATOS na lista ##### */
     public ListaCandidatos listaDeCandidatos() throws IOException {
@@ -146,7 +145,7 @@ public class AddArqTAD {
                 break;
             parts = line.split(";\s");
 
-            u = new Urnas(parts[0], parts[1], parts[2]);
+            u = new Urnas(parts[0], parts[1], parts[2], parts[3]);
             listaUrnas.inserirFinal(u);
         }
         br.close();
@@ -165,19 +164,21 @@ public class AddArqTAD {
             if (line == null)
                 break;
 
+            // O "parts" recebeu a linha atual do arquivo e removeu o ; e o espaço, colocando cada registro em uma célula do vetor
             String[] parts = line.split(";\s");
 
             if (!dirExportar.exists())
                 dirExportar.mkdir();
+
+            // Uma iteração é feita criando um arquivo para cada linha de cidade no txt
             File exportarCandidatos = new File(dirExportar + "\\ExportarCandidatos" + i + ".txt");
 
             if (!exportarCandidatos.exists())
                 exportarCandidatos.createNewFile();
 
-            String juntarCidade = parts[0] + "; " + parts[1] + "; " + parts[2] + "; " + parts[3];
             FileWriter fw = new FileWriter(exportarCandidatos.getAbsoluteFile(), true);
             PrintWriter pw = new PrintWriter(fw);
-            pw.print(juntarCidade);
+            pw.print(line);
             pw.close();
 
             ListaCandidatos novaLista = new ListaCandidatos();
@@ -207,35 +208,15 @@ public class AddArqTAD {
             if (!exportarUrnas.exists())
                 exportarUrnas.createNewFile();
 
-            String juntar = parts[0] + "; " + parts[1] + "; " + parts[2];
             FileWriter fw = new FileWriter(exportarUrnas.getAbsoluteFile(), true);
             PrintWriter pw = new PrintWriter(fw);
-            pw.print(juntar);
+            pw.print(line);
             pw.close();
 
             ListaEleitores novaLista = new ListaEleitores();
-            novaLista = listaDeEleitores().insereListaUrnaEleitor(parts[0], parts[1], parts[2]);
+            novaLista = listaDeEleitores().insereListaUrnaEleitor(parts[0], parts[2], parts[3]);
             novaLista.exportaArquivo(novaLista, exportarUrnas);
             i++;
         }
-    }
-
-    public ListaEleitores teste() throws IOException {
-        String fileName = dirGeral + "\\" + fileUrnas;
-        FileReader fr = new FileReader(fileName);
-        BufferedReader br = new BufferedReader(fr);
-        ListaEleitores novaLista = new ListaEleitores();
-
-        while (true) {
-            String line = br.readLine();
-            if (line == null)
-                break;
-
-            String[] parts = line.split(";\s");
-            String juntar = parts[0] + "; " + parts[1] + "; " + parts[2];
-
-            novaLista = listaDeEleitores().insereListaUrnaEleitor(parts[0], parts[1], "1001");
-        }
-        return novaLista;
     }
 }

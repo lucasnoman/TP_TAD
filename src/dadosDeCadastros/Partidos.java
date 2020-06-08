@@ -4,6 +4,16 @@ public class Partidos {
     private String nome;
     private String sigla;
 
+    public Partidos() {
+        nome = "";
+        sigla = "";
+    }
+
+    public Partidos(String nome, String sigla) {
+        this.nome = nome;
+        this.sigla = sigla;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -17,16 +27,6 @@ public class Partidos {
     }
 
     public void setSigla(String sigla) {
-        this.sigla = sigla;
-    }
-
-    public Partidos() {
-        nome = "";
-        sigla = "";
-    }
-
-    public Partidos(String nome, String sigla) {
-        this.nome = nome;
         this.sigla = sigla;
     }
 }

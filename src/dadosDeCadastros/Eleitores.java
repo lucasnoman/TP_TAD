@@ -16,14 +16,6 @@ public class Eleitores {
         secaoEleitoral = "";
     }
 
-    public Eleitores(String nome, String numTitulo, String munEleitoral, String zonaEleitoral, String secaoEleitoral) {
-        this.nome = nome;
-        this.numTitulo = numTitulo;
-        this.munEleitoral = munEleitoral;
-        this.zonaEleitoral = zonaEleitoral;
-        this.secaoEleitoral = secaoEleitoral;
-    }
-
     public Eleitores(String numTitulo) {
         this.numTitulo = numTitulo;
         status = "A";//No inicio, todos ainda estão 'A' - ausentes
@@ -33,6 +25,14 @@ public class Eleitores {
     public Eleitores(String numTitulo, String status) {
         this.numTitulo = numTitulo;
         this.status = status;
+    }
+
+    public Eleitores(String nome, String numTitulo, String munEleitoral, String zonaEleitoral, String secaoEleitoral) {
+        this.nome = nome;
+        this.numTitulo = numTitulo;
+        this.munEleitoral = munEleitoral;
+        this.zonaEleitoral = zonaEleitoral;
+        this.secaoEleitoral = secaoEleitoral;
     }
 
     public String getNome() {
@@ -73,5 +73,13 @@ public class Eleitores {
 
     public void setSecaoEleitoral(String secaoEleitoral) {
         this.secaoEleitoral = secaoEleitoral;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

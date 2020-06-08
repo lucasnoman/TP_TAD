@@ -1,6 +1,0 @@
-Capelinha; MG; 40000; 13
-Cand1CAP; 15; MDB; V
-Cand2CAP; 45; PSDB; P
-Cand3CAP; 11; PP; P
-Cand4CAP; 12; PDT; V
-Cand5CAP; 25; DEM; V

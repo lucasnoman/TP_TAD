@@ -54,4 +54,14 @@ public class ListaMunicipios {
         }
         return null;
     }
+
+    public int tamLista(){
+        int cont = 0;
+        CelulaMunicipios aux = primeiro.proximo;
+        while (aux != null){
+            cont++;
+            aux = aux.proximo;
+        }
+        return cont;
+    }
 }

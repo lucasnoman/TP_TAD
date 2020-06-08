@@ -20,12 +20,14 @@ public class ListaUrnas {
     public void imprimir() {
         CelulaUrnas aux;
         aux = primeiro.proximo;
+        int i = 0;
 
         if (listaVazia()) {
             System.out.println("A lista de urnas está vazia");
         } else {
             while (aux != null) {
-                System.out.println(aux.item.getMunicipio() + " - " + aux.item.getZonaEleitoral() + " - " + aux.item.getSecaoEleitoral());
+                System.out.println(i + ": " + aux.item.getMunicipio() + " - " + aux.item.getZonaEleitoral() + " - " + aux.item.getSecaoEleitoral());
+                i++;
                 aux = aux.proximo;
             }
         }

@@ -7,7 +7,7 @@ public class Candidatos {
     private String estado;
     private String partido;
     private String cargo;
-    private int totalVotos;
+    int totalVotos;
 
     public Candidatos() {
         nome = "";
@@ -89,5 +89,10 @@ public class Candidatos {
 
     public void setTotalVotos(int totalVotos) {
         this.totalVotos = totalVotos;
+    }
+
+    @Override
+    public String toString() {
+        return "Candidato [nome=" + nome + ", numero=" + numero + ", partido=" + partido + "]";
     }
 }

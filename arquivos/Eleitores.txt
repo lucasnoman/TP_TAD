@@ -1,8 +1,8 @@
-Lucas Calhau Noman; 012345670201; Capelinha; 001; 0110
-Ailton Pedra; 000000010201; Capelinha; 002; 0110
-Marli Banana; 000000020202; Capelinha; 002; 0110
-Reni Sobrenome; 765432100205; Belo Horizonte; 010; 1001
-João do biscoito; 565232100201; Belo Horizonte; 010; 1001
-Pedro Pera; 002008040105; Belo Horizonte; 010; 1000
-Nome Sobrenome; 000000030204; Belo Horizonte; 011; 1001
-Serafina Areia; 000000040203; Belo Horizonte; 100; 1001
+Lucas Calhau Noman; 123; Capelinha; 001; 0110
+Ailton Pedra; 321; Capelinha; 002; 0110
+Marli Banana; 456; Capelinha; 002; 0110
+Reni Sobrenome; 654; Belo Horizonte; 010; 1001
+João do biscoito; 789; Belo Horizonte; 010; 1001
+Pedro Pera; 978; Belo Horizonte; 010; 1000
+Nome Sobrenome; 147; Belo Horizonte; 011; 1001
+Serafina Areia; 741; Belo Horizonte; 100; 1001

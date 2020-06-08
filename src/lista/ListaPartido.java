@@ -54,4 +54,14 @@ public class ListaPartido {
         }
         return null;
     }
+
+    public int tamLista(){
+        int cont = 0;
+        CelulaPartidos aux = primeiro.proximo;
+        while (aux != null){
+            cont++;
+            aux = aux.proximo;
+        }
+        return cont;
+    }
 }
