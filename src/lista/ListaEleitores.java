@@ -28,13 +28,15 @@ public class ListaEleitores {
             System.out.println("A lista de eleitores está vazia");
         } else {
             while (aux != null) {
-                System.out.println(aux.item.getNome() + " - " + aux.item.getNumTitulo() + " - " + aux.item.getMunEleitoral() + " - " + aux.item.getZonaEleitoral() + " - " + aux.item.getSecaoEleitoral());
-//                System.out.println(aux.item.getNumTitulo());
+                System.out.println(
+                        aux.item.getNome() + " - " + aux.item.getNumTitulo() + " - " + aux.item.getMunEleitoral()
+                                + " - " + aux.item.getZonaEleitoral() + " - " + aux.item.getSecaoEleitoral());
                 aux = aux.proximo;
             }
         }
     }
 
+    // usado para imprimir os eleitores que justificaram
     public void imprimirJustificativas() {
         CelulaEleitores aux;
         aux = primeiro.proximo;
@@ -44,12 +46,12 @@ public class ListaEleitores {
         } else {
             while (aux != null) {
                 System.out.println(aux.item.getNumTitulo());
-//                System.out.println(aux.item.getNumTitulo());
                 aux = aux.proximo;
             }
         }
     }
 
+    // imprime na tela os eleitores carregados
     public void imprimirDadosEleitores() {
         CelulaEleitores aux;
         aux = primeiro.proximo;
@@ -64,6 +66,7 @@ public class ListaEleitores {
         }
     }
 
+    // imprime o núm do título e se votou ou esteve ausente em relação a devida urna
     public void imprimirDetalhes() {
         CelulaEleitores aux;
         aux = primeiro.proximo;
@@ -72,7 +75,8 @@ public class ListaEleitores {
             System.out.println("A lista de eleitores está vazia");
         } else {
             while (aux != null) {
-                System.out.println("Número do titulo: " + aux.item.getNumTitulo() + " - Status: " + aux.item.getStatus());
+                System.out
+                        .println("Número do titulo: " + aux.item.getNumTitulo() + " - Status: " + aux.item.getStatus());
                 aux = aux.proximo;
             }
         }
@@ -101,6 +105,7 @@ public class ListaEleitores {
         return null;
     }
 
+    // Caso o eleitor tenha votado, atualiza a variável "status" para V
     public void atualizarStatusEleitor(String numTitulo) {
         CelulaEleitores aux;
         aux = primeiro.proximo;
@@ -116,12 +121,16 @@ public class ListaEleitores {
         }
     }
 
+    // Cria uma lista apenas com os eleitores de suas recpectivas urnas
+    // Recebe como parâmetro os dados obtidos no arquivo "Municipios"
     public ListaEleitores insereListaUrnaEleitor(String municipio, String zonaEleitoral, String secaoEleitoral) {
         CelulaEleitores aux = primeiro.proximo;
         ListaEleitores lista = new ListaEleitores();
 
         while (aux != null) {
-            if (aux.item.getMunEleitoral().equals(municipio) && aux.item.getZonaEleitoral().equals(zonaEleitoral) && aux.item.getSecaoEleitoral().equals(secaoEleitoral)) {
+            // Compara os dados dos parâmetros com os devidos dados da lista de eleitores
+            if (aux.item.getMunEleitoral().equals(municipio) && aux.item.getZonaEleitoral().equals(zonaEleitoral)
+                    && aux.item.getSecaoEleitoral().equals(secaoEleitoral)) {
                 lista.inserirFinal(aux.item);
                 aux = aux.proximo;
             } else {
@@ -131,16 +140,18 @@ public class ListaEleitores {
         return lista;
     }
 
+    // Exporta o arquivo ao receber a lista com os candidatos da referida urna e o devido arquivo
     public void exportaArquivo(ListaEleitores lista, File file) throws IOException {
         FileWriter fw = new FileWriter(file, true);
-        PrintWriter pw = new PrintWriter(fw);
+        BufferedWriter bw = new BufferedWriter(fw);
         CelulaEleitores aux = lista.primeiro;
 
         while (aux != null) {
-            pw.println(aux.item.getNumTitulo() + "; " + aux.item.getStatus());
+            bw.write(aux.item.getNumTitulo());
             aux = aux.proximo;
+            bw.newLine();
         }
-        pw.close();
+        bw.close();
     }
 
     public int tamLista() {

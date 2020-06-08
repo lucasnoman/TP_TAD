@@ -1,7 +1,0 @@
-
-Cand1BH; 22; PL; V; 1
-Cand4BH; 17; PSL; V; 0
-Cand5BH; 20; PSC; V; 0
-
-Cand2BH; 22; PL; P; 1
-Cand3BH; 40; PSB; P; 0

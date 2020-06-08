@@ -26,7 +26,8 @@ public class ListaUrnas {
             System.out.println("A lista de urnas está vazia");
         } else {
             while (aux != null) {
-                System.out.println(i + ": " + aux.item.getMunicipio() + " - " + aux.item.getZonaEleitoral() + " - " + aux.item.getSecaoEleitoral());
+                System.out.println(i + ": " + aux.item.getMunicipio() + " - " + aux.item.getZonaEleitoral() + " - "
+                        + aux.item.getSecaoEleitoral());
                 i++;
                 aux = aux.proximo;
             }
@@ -47,7 +48,8 @@ public class ListaUrnas {
         aux = primeiro.proximo;
 
         while (aux != null) {
-            if (aux.item.getMunicipio().equals(municipio) && aux.item.getZonaEleitoral().equals(zona) && aux.item.getSecaoEleitoral().equals(secao)) {
+            if (aux.item.getMunicipio().equals(municipio) && aux.item.getZonaEleitoral().equals(zona)
+                    && aux.item.getSecaoEleitoral().equals(secao)) {
                 return aux.item;
             } else {
                 aux = aux.proximo;
@@ -56,11 +58,11 @@ public class ListaUrnas {
         return null;
     }
 
-    /* Conta a quantidade de registro de Urnas */
-    public int tamLista(){
+    // Conta a quantidade de registro de Urnas
+    public int tamLista() {
         int cont = 0;
         CelulaUrnas aux = primeiro.proximo;
-        while (aux != null){
+        while (aux != null) {
             cont++;
             aux = aux.proximo;
         }

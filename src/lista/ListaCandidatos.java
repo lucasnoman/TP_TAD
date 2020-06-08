@@ -32,7 +32,7 @@ public class ListaCandidatos {
                     System.out.println(aux.item.getNome() + " - " + aux.item.getNumero() + " - " + aux.item.getMunicipio() + " - " + aux.item.getEstado() + " - " + aux.item.getPartido() + " - " + aux.item.getCargo());
                     aux = aux.proximo;
                 } else {
-                    //imprime no menu os dados do arquivo exportado
+                    // Imprime no menu os dados da lista de arquivos exportados
                     System.out.println(aux.item.getNome() + " - " + aux.item.getNumero() + " - " + aux.item.getPartido());
                     aux = aux.proximo;
                 }
@@ -41,8 +41,8 @@ public class ListaCandidatos {
         }
     }
 
+    // Imprime a quantidade de votos do respectivo candidato
     public void imprimirVotos() {
-        // precisa mexer!!!!!!!!!!!!
         CelulaCandidatos aux;
         aux = primeiro.proximo;
 
@@ -63,20 +63,6 @@ public class ListaCandidatos {
     public void concatenar(ListaCandidatos lista) {
         ultimo.proximo = lista.ultimo;
         ultimo = ultimo.proximo;
-    }
-
-    public Candidatos localizar(String nomeCandidato) {
-        CelulaCandidatos aux;
-        aux = primeiro.proximo;
-
-        while (aux != null) {
-            if (aux.item.getNome().equals(nomeCandidato)) {
-                return aux.item;
-            } else {
-                aux = aux.proximo;
-            }
-        }
-        return null;
     }
 
     public Candidatos localizarPorNum(String numCandidato) {
@@ -118,11 +104,13 @@ public class ListaCandidatos {
         }
     }
 
+    // Cria uma lista apenas com os candidatos de seus respectivos municípios
     public ListaCandidatos insereListaMunCand(String municipio, String estado) {
         CelulaCandidatos aux = primeiro.proximo;
         ListaCandidatos lista = new ListaCandidatos();
 
         while (aux != null) {
+            // Compara o município encontrado na lista "Municipios.txt" com o munic e est na lista de candidatos
             if (aux.item.getMunicipio().equals(municipio) && aux.item.getEstado().equals(estado)) {
                 lista.inserirFinal(aux.item);
             }
@@ -131,6 +119,7 @@ public class ListaCandidatos {
         return lista;
     }
 
+    // Exporta o arquivo ao receber a lista com os candidatos da referida urna e o devido arquivo
     public void exportaArquivo(ListaCandidatos lista, File file) throws IOException {
         FileWriter fw = new FileWriter(file, true);
         PrintWriter pw = new PrintWriter(fw);
@@ -138,7 +127,7 @@ public class ListaCandidatos {
         pw.println(""); //pula a primeira linha que já tem os dados da cidade
 
         while (aux != null) {
-            String recebe = aux.item.getNome() + "; " + aux.item.getNumero() + "; " + aux.item.getPartido() + "; " + aux.item.getCargo() + "; " + aux.item.getTotalVotos();
+            String recebe = aux.item.getNome() + "; " + aux.item.getNumero() + "; " + aux.item.getPartido() + "; " + aux.item.getCargo();
             pw.println(recebe); // escreve no arquivo os dados dos candidatos
             aux = aux.proximo;
         }

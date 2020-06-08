@@ -52,8 +52,8 @@ public class Menu {
 
         int escolhaJustif = 0;
 
-//        String arqEleitores = "arquivos\\exportar\\ExportarUrnas1.txt";
-//        String arqCandidatos = "arquivos\\exportar\\ExportarCandidatos1.txt";
+        // String arqEleitores = "arquivos\\exportar\\ExportarUrnas1.txt";
+        // String arqCandidatos = "arquivos\\exportar\\ExportarCandidatos1.txt";
 
         ListaEleitores listEleitores = new ListaEleitores();
         ListaEleitores listJustificativas = new ListaEleitores();
@@ -67,6 +67,12 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         int escolhaMenu = 0, escolhaMenuVotacao = 0;
         AddArqTAD at = new AddArqTAD();
+        // Esses dois arquivos "exportaCandidatos" e "exportarUrnas" só devem ser
+        // executados na primeira vez que usar o
+        // programa, ou toda vez que finalizar, deve ser deletada a pasta "exportar"
+        // dentro da pasta "arquivos"
+        at.exportaCandidatos();
+        at.exportarUrnas();
 
         do {
             limpaTela();
@@ -84,7 +90,9 @@ public class Menu {
                     System.out.print("Escolha: ");
                     int i = sc.nextInt();
                     System.out.println("--------------------------\n");
-                    // o que for colocar em "lerArqDadosUrna", vai alterar o "case 2". Neste caso, o usuário irá digitar a cidade, zona e seção e o "case 2" irá procurar o arquivo exportado referente a essa urna
+                    // o que for colocar em "lerArqDadosUrna", vai alterar o "case 2". Neste caso, o
+                    // usuário irá digitar a cidade, zona e seção e o "case 2" irá procurar o
+                    // arquivo exportado referente a essa urna
                     urnaLocal = lerArqDadosUrna(dirExportar + "\\ExportarUrnas" + i + ".txt");
                     System.out.println("\n Digite 0 e tecle enter para continuar.....");
                     sc.nextInt();// coloquei apenas para pausar a tela um pouco antes dele mudar
@@ -95,8 +103,10 @@ public class Menu {
                     System.out.println("----------------------------------------------------------");
                     System.out.println("          2 -  Carregar dados dos Eleitores");
                     System.out.println("----------------------------------------------------------\n");
-                    // Busca o arquivo de exportação referente aos dados da urna pedidos no "case 1" e retorna o devido "File"
-                    File arquivoUrnas = encontraArquivoUrnaExportado(urnaLocal.getMunicipio(), urnaLocal.getEstado(), urnaLocal.getZonaEleitoral(), urnaLocal.getSecaoEleitoral());
+                    // Busca o arquivo de exportação referente aos dados da urna pedidos no "case 1"
+                    // e retorna o devido "File"
+                    File arquivoUrnas = encontraArquivoUrnaExportado(urnaLocal.getMunicipio(), urnaLocal.getEstado(),
+                            urnaLocal.getZonaEleitoral(), urnaLocal.getSecaoEleitoral());
                     System.out.println();
                     System.out.println("Teste: " + urnaLocal.getMunicipio() + " - " + urnaLocal.getSecaoEleitoral());
                     System.out.println();
@@ -111,8 +121,10 @@ public class Menu {
                     System.out.println("----------------------------------------------------------");
                     System.out.println("          3 -  Carregar dados dos candidatos a prefeito e vereador");
                     System.out.println("----------------------------------------------------------\n");
-                    // aqui irá puxar os dados exportados e criar uma lista de candidados a prefeito e outra lista de candidados a vereador
-                    File arqCandidatos = escontraArquivoCandidatosExportados(urnaLocal.getMunicipio(), urnaLocal.getEstado());
+                    // aqui irá puxar os dados exportados e criar uma lista de candidados a prefeito
+                    // e outra lista de candidados a vereador
+                    File arqCandidatos = escontraArquivoCandidatosExportados(urnaLocal.getMunicipio(),
+                            urnaLocal.getEstado());
                     lerArqCriarListaCand(arqCandidatos.toString(), listPrefeitos, listVereadores);
                     limpaTela();
                     System.out.println("--------------------------");
@@ -145,7 +157,7 @@ public class Menu {
 
                                 escolhaJustif = sc.nextInt();
                                 if (escolhaJustif == 1) {
-                                    justificar(urnaLocal.getMunicipio(), urnaLocal.getZonaEleitoral(), urnaLocal.getSecaoEleitoral(), titulo, listJustificativas);
+                                    justificar(titulo, listJustificativas);
                                     System.out.println("\n Digite 0 e tecle enter para continuar.....");
                                     sc.nextInt();// coloquei apenas para pausar a tela um pouco antes dele mudar
                                 }
@@ -161,23 +173,28 @@ public class Menu {
                             } else {
 
                                 limpaTela();
-                                System.out.println("--------------------------------------------------------------------");
+                                System.out.println(
+                                        "--------------------------------------------------------------------");
                                 System.out.println("Local de votação correto, e ainda não votou....");
-                                System.out.println("--------------------------------------------------------------------");
+                                System.out.println(
+                                        "--------------------------------------------------------------------");
                                 System.out.println("\n Digite 0 e tecle enter para liberar a tela de votação.....");
-                                sc.nextInt();// coloquei apenas para pausar a tela um pouco antes dele mudar para facilitar na hora de votar!!!
+                                sc.nextInt();// coloquei apenas para pausar a tela um pouco antes dele mudar para
+                                             // facilitar na hora de votar!!!
 
                                 limpaTela();
                                 System.out.println("\nLista de vereadores disponiveis para voto\n");
                                 listVereadores.imprimir();
-                                System.out.println("\n------------------------------------------------------------------------");
+                                System.out.println(
+                                        "\n------------------------------------------------------------------------");
                                 System.out.println("Digite o número do seu candidato a vereador:");
                                 sc.nextLine();
                                 String numVereador = sc.nextLine();
                                 System.out.println("O número digitado foi: " + numVereador);
                                 Candidatos candV = listVereadores.localizarPorNum(numVereador);
                                 System.out.println(candV);
-                                System.out.println("------------------------------------------------------------------------");
+                                System.out.println(
+                                        "------------------------------------------------------------------------");
                                 System.out.println("\n Digite 0 e tecle enter para continuar.....");
                                 sc.nextInt();
                                 listVereadores.lancarVoto(numVereador);
@@ -186,14 +203,16 @@ public class Menu {
 
                                 limpaTela();
                                 listPrefeitos.imprimir();
-                                System.out.println("\n------------------------------------------------------------------------");
+                                System.out.println(
+                                        "\n------------------------------------------------------------------------");
                                 System.out.println("Digite o número do seu candidato a Prefeito:");
                                 sc.nextLine();
                                 String numPrefeito = sc.nextLine();
                                 System.out.println("O número digitado para seu voto a prefeito foi: " + numPrefeito);
                                 Candidatos candP = listPrefeitos.localizarPorNum(numPrefeito);
                                 System.out.println(candP);
-                                System.out.println("------------------------------------------------------------------------");
+                                System.out.println(
+                                        "------------------------------------------------------------------------");
                                 System.out.println("\n Digite 0 e tecle enter para continuar.....");
                                 sc.nextInt();// coloquei apenas para pausar a tela um pouco antes dele mudar
 
@@ -211,7 +230,7 @@ public class Menu {
                             sc.nextLine();
                             titulo = sc.nextLine();
 
-                            justificar(urnaLocal.getMunicipio(), urnaLocal.getZonaEleitoral(), urnaLocal.getSecaoEleitoral(), titulo, listJustificativas);
+                            justificar(titulo, listJustificativas);
                             System.out.println("\n Digite 0 e tecle enter para continuar.....");
                             sc.nextInt();// coloquei apenas para pausar a tela um pouco antes dele mudar
 
@@ -247,17 +266,13 @@ public class Menu {
                     System.out.println("----------------------------------------------------------");
                     System.out.println("           6 - Exportar dados da votação");
                     System.out.println("----------------------------------------------------------\n");
-                    File exportaResultado = new File(dirExportar + "\\ResultadosCandidatos.txt");
-                    File exportaResultado2 = new File(dirExportar + "\\Justificados.txt");
-
-                    ListaEleitores nLista = new ListaEleitores();
-//                    nLista.exportaArquivo(listJustificativas,listEleitores, exportaResultado2);
+                    File exportaResultado = new File(dirExportar + "\\ResultadoVotos.txt");
+                    File exportaResultado2 = new File(dirExportar + "\\ResultadoJustificados.txt");
 
                     listJustificativas.exportaArquivo(listJustificativas, exportaResultado2);
                     listEleitores.exportaArquivo(listEleitores, exportaResultado2);
                     listVereadores.exportaArquivo(listVereadores, exportaResultado);
                     listPrefeitos.exportaArquivo(listPrefeitos, exportaResultado);
-
                     System.out.println("\n Digite 0 e tecle enter para continuar.....");
                     sc.nextInt();// coloquei apenas para pausar a tela um pouco antes dele mudar
                 }
@@ -293,14 +308,17 @@ public class Menu {
 
     }
 
-    public void justificar(String muncipio, String zona, String secao, String titulo, ListaEleitores listJustif) {
+    // Caso a pessoa escolha justificar ou a urna não identifique o título, esse
+    // método é ativado para justificar o voto
+    public void justificar(String titulo, ListaEleitores listJustif) {
         System.out.println("----------------------------------------------------------------\n");
         System.out.println("A justificativa  de voto - entrou");
-//        Eleitores eleitor = new Eleitores(titulo, "J");
-        Eleitores eleitor = new Eleitores("", titulo, muncipio, zona, secao, "J");
+        Eleitores eleitor = new Eleitores(titulo, "J");
+        // Acima o objeto pega recebe o título de quem justifica e o "J" como status de
+        // justificado e na linha de baixo insere na linha de eleitores justificados
         listJustif.inserirFinal(eleitor);
         System.out.println("Voto Justificado!!!");
-        listJustif.imprimir();
+        listJustif.imprimirJustificativas();
     }
 
     public void lerArquivo(String file) throws IOException {
@@ -317,6 +335,8 @@ public class Menu {
         br.close();
     }
 
+    // Recebe como parâmetro o arquivo de urna exportado inicialmente (F módulo 1 do
+    // trabalho)
     public Urnas lerArqDadosUrna(String file) throws IOException {
         String linha;
         String[] parts;
@@ -330,9 +350,9 @@ public class Menu {
         Eleitores el;
         ListaEleitores lista = new ListaEleitores();
 
-        // imprime linha a linha
+        // Coloca no objeto urna, os dados lidos no arquivo exportado
+        // (ExportarUrnas2.txt, por exemplo), que no caso é a primeira linha, apenas
         while (true) {
-
             linha = br.readLine();
             parts = linha.split(";\s");
             cidade = parts[0];
@@ -353,6 +373,8 @@ public class Menu {
         return urna;
     }
 
+    // Lê o arquivo recebido e retorna uma lista com os eleitores da urna carregada
+    // no "Case 1"
     public ListaEleitores lerArqCriarLista(String file) throws IOException {
         String linha;
         String[] parts;
@@ -363,7 +385,7 @@ public class Menu {
         Eleitores el;
         ListaEleitores lista = new ListaEleitores();
 
-        // imprime linha a linha
+        // Faz uma lista de eleitores com os dados recebidos do arquivo
         while (true) {
             linha = br.readLine();
             if (passouPrimeiraLinha) {
@@ -383,7 +405,9 @@ public class Menu {
         return lista;
     }
 
-    public void lerArqCriarListaCand(String file, ListaCandidatos prefeitos, ListaCandidatos vereadores) throws IOException {
+    // Recebe o arquivo carregado
+    public void lerArqCriarListaCand(String file, ListaCandidatos prefeitos, ListaCandidatos vereadores)
+            throws IOException {
         System.out.println("Carregar dados dos candidatos - ENTROU");
         System.out.println("----------------------------------------------------------------\n");
 
@@ -396,9 +420,8 @@ public class Menu {
 
         Candidatos cand;
 
-        // imprime linha a linha
+        // Pega os dados do arquivo e cria uma lista para prefeitos e uma para vereador
         while (true) {
-
             linha = br.readLine();
             if (passouPrimeiraLinha) {
                 if (linha == null)
@@ -409,12 +432,10 @@ public class Menu {
                 // System.out.println("Este é o cargo : " + cargo);
 
                 if (cargo.equals("P")) {// vai criar a lista de prefeito
-
                     cand = new Candidatos(parts[0], Integer.parseInt(parts[1]), parts[2], parts[3]);
                     prefeitos.inserirFinal(cand);
 
                 } else {
-
                     cand = new Candidatos(parts[0], Integer.parseInt(parts[1]), parts[2], parts[3]);
                     vereadores.inserirFinal(cand);
                 }
@@ -425,7 +446,10 @@ public class Menu {
         br.close();
     }
 
-    public File encontraArquivoUrnaExportado(String municipio, String estado, String zona, String secao) throws IOException {
+    // Ao receber os dados pedido no parâmetro, procura o arquivo txt referente,
+    // sendo sempre algum dos "ExportarUrnas" e o retorna
+    public File encontraArquivoUrnaExportado(String municipio, String estado, String zona, String secao)
+            throws IOException {
         int i = 0;
         boolean termina = false;
         File arqExportado = new File(dirExportar + "\\ExportarUrnas" + i + ".txt");
@@ -438,15 +462,20 @@ public class Menu {
             line = br.readLine();
             String[] parts = line.split(";\s");
 
-            if (parts[0].equals(municipio) && parts[1].equals(estado) && parts[2].equals(zona) && parts[3].equals(secao)) {
+            // Usa o vetor "parts" para receber os dados do arquivo e conferir com o pedido
+            // em parâmetro. Caso sejam o mesmo, retorna o arquivo
+            if (parts[0].equals(municipio) && parts[1].equals(estado) && parts[2].equals(zona)
+                    && parts[3].equals(secao)) {
                 termina = true;
                 return arqExportado;
             }
+            // Vai passando pelos arquivos ExportarUrnas"
             i++;
         }
         return arqExportado;
     }
 
+    // Faz a mesma coisa do código acima, porém com os candidatos
     public File escontraArquivoCandidatosExportados(String municipio, String estado) throws IOException {
         int i = 0;
         boolean termina = false;

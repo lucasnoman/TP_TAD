@@ -27,7 +27,8 @@ public class AddArqTAD {
         br = new BufferedReader(fr);
         Candidatos c;
         listaCandidatos = new ListaCandidatos();
-        while (true) { // Lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER). Isso se repete para todos os arquivos txt abaixo
+        while (true) { // Lê o arquivo e remove o " ; " e a "quebra de linha" (ENTER). Isso se repete
+                       // para todos os arquivos txt abaixo
             line = br.readLine();
             if (line == null)
                 break;
@@ -153,20 +154,26 @@ public class AddArqTAD {
     }
     /* ##### FIM inserir URNAS na lista ##### */
 
+    // Recupera os dados em "Municipios.txt" e a para cada linha sua,
+    // compara com a lista já feita de Candidatos e cria um arquivo
     public void exportaCandidatos() throws IOException {
+        // Recebe primeiramente o txt de municipios
         String fileName = dirGeral + "\\" + fileMunicipios;
         FileReader fr = new FileReader(fileName);
         BufferedReader br = new BufferedReader(fr);
         int i = 0;
 
         while (true) {
+            // Enquanto não terminar de ler o arquivo, não para (break)
             String line = br.readLine();
             if (line == null)
                 break;
 
-            // O "parts" recebeu a linha atual do arquivo e removeu o ; e o espaço, colocando cada registro em uma célula do vetor
+            // O "parts" recebeu a linha atual do arquivo e removeu o ; e o espaço,
+            // colocando cada registro em uma célula do vetor
             String[] parts = line.split(";\s");
 
+            // Se o diretório não existir, cria um novo
             if (!dirExportar.exists())
                 dirExportar.mkdir();
 
@@ -176,18 +183,28 @@ public class AddArqTAD {
             if (!exportarCandidatos.exists())
                 exportarCandidatos.createNewFile();
 
+            // O segundo parâmetro desta classe fica como "true" para que o conteúdo já
+            // escrito (que é toda a linha referente a cidade)
+            // não seja sobrescrito, mas escrito nas linhas de baixo
             FileWriter fw = new FileWriter(exportarCandidatos.getAbsoluteFile(), true);
             PrintWriter pw = new PrintWriter(fw);
             pw.print(line);
             pw.close();
 
             ListaCandidatos novaLista = new ListaCandidatos();
+            // Cria uma nova lista de candidatos, busca o método "listaDeCandidatos" (que já
+            // tem a lista pronta) e a partir dele insere apenas os dados na posição 0 e 1
+            // do município, que são respectivamente nome da cidade e estado
             novaLista = listaDeCandidatos().insereListaMunCand(parts[0], parts[1]);
+            // com essa nova lista pronta, adiciona no arquivo criado acima (na linha 179)
+            // os candidatos dessa urna e exporta
             novaLista.exportaArquivo(novaLista, exportarCandidatos);
             i++;
         }
     }
 
+    // Esse método faz a mesma coisa acima, porém usando o arquivo de urna para
+    // exportar seus devidos eleitores
     public void exportarUrnas() throws IOException {
         String fileName = dirGeral + "\\" + fileUrnas;
         FileReader fr = new FileReader(fileName);
