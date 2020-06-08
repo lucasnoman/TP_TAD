@@ -145,7 +145,7 @@ public class Menu {
 
                                 escolhaJustif = sc.nextInt();
                                 if (escolhaJustif == 1) {
-                                    justificar(titulo, listJustificativas);
+                                    justificar(urnaLocal.getMunicipio(), urnaLocal.getZonaEleitoral(), urnaLocal.getSecaoEleitoral(), titulo, listJustificativas);
                                     System.out.println("\n Digite 0 e tecle enter para continuar.....");
                                     sc.nextInt();// coloquei apenas para pausar a tela um pouco antes dele mudar
                                 }
@@ -211,7 +211,7 @@ public class Menu {
                             sc.nextLine();
                             titulo = sc.nextLine();
 
-                            justificar(titulo, listJustificativas);
+                            justificar(urnaLocal.getMunicipio(), urnaLocal.getZonaEleitoral(), urnaLocal.getSecaoEleitoral(), titulo, listJustificativas);
                             System.out.println("\n Digite 0 e tecle enter para continuar.....");
                             sc.nextInt();// coloquei apenas para pausar a tela um pouco antes dele mudar
 
@@ -228,7 +228,7 @@ public class Menu {
                     System.out.println("O resultado final da votação é:\n");
                     System.out.println("------------------------------------------------------------------------");
                     System.out.println("Titulos justificados\n");
-                    listJustificativas.imprimir();
+                    listJustificativas.imprimirJustificativas();
                     System.out.println("------------------------------------------------------------------------");
                     System.out.println("Lista detalhada dos eleitores desta urna\n");
                     listEleitores.imprimirDetalhes();
@@ -247,11 +247,17 @@ public class Menu {
                     System.out.println("----------------------------------------------------------");
                     System.out.println("           6 - Exportar dados da votação");
                     System.out.println("----------------------------------------------------------\n");
-                    File exportaResultado = new File(dirExportar + "\\Resultados.txt");
-                    listJustificativas.exportaArquivo(listJustificativas, exportaResultado);
-                    listEleitores.exportaArquivo(listEleitores, exportaResultado);
+                    File exportaResultado = new File(dirExportar + "\\ResultadosCandidatos.txt");
+                    File exportaResultado2 = new File(dirExportar + "\\Justificados.txt");
+
+                    ListaEleitores nLista = new ListaEleitores();
+//                    nLista.exportaArquivo(listJustificativas,listEleitores, exportaResultado2);
+
+                    listJustificativas.exportaArquivo(listJustificativas, exportaResultado2);
+                    listEleitores.exportaArquivo(listEleitores, exportaResultado2);
                     listVereadores.exportaArquivo(listVereadores, exportaResultado);
                     listPrefeitos.exportaArquivo(listPrefeitos, exportaResultado);
+
                     System.out.println("\n Digite 0 e tecle enter para continuar.....");
                     sc.nextInt();// coloquei apenas para pausar a tela um pouco antes dele mudar
                 }
@@ -287,10 +293,11 @@ public class Menu {
 
     }
 
-    public void justificar(String titulo, ListaEleitores listJustif) {
+    public void justificar(String muncipio, String zona, String secao, String titulo, ListaEleitores listJustif) {
         System.out.println("----------------------------------------------------------------\n");
         System.out.println("A justificativa  de voto - entrou");
-        Eleitores eleitor = new Eleitores(titulo, "J");
+//        Eleitores eleitor = new Eleitores(titulo, "J");
+        Eleitores eleitor = new Eleitores("", titulo, muncipio, zona, secao, "J");
         listJustif.inserirFinal(eleitor);
         System.out.println("Voto Justificado!!!");
         listJustif.imprimir();

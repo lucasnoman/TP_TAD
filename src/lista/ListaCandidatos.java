@@ -138,7 +138,7 @@ public class ListaCandidatos {
         pw.println(""); //pula a primeira linha que já tem os dados da cidade
 
         while (aux != null) {
-            String recebe = aux.item.getNome() + "; " + aux.item.getNumero() + "; " + aux.item.getPartido() + "; " + aux.item.getCargo();
+            String recebe = aux.item.getNome() + "; " + aux.item.getNumero() + "; " + aux.item.getPartido() + "; " + aux.item.getCargo() + "; " + aux.item.getTotalVotos();
             pw.println(recebe); // escreve no arquivo os dados dos candidatos
             aux = aux.proximo;
         }

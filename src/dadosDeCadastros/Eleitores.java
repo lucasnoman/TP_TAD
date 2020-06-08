@@ -35,6 +35,15 @@ public class Eleitores {
         this.secaoEleitoral = secaoEleitoral;
     }
 
+    public Eleitores(String nome, String numTitulo, String munEleitoral, String zonaEleitoral, String secaoEleitoral, String status) {
+        this.nome = nome;
+        this.numTitulo = numTitulo;
+        this.munEleitoral = munEleitoral;
+        this.zonaEleitoral = zonaEleitoral;
+        this.secaoEleitoral = secaoEleitoral;
+        this.status = status;
+    }
+
     public String getNome() {
         return nome;
     }

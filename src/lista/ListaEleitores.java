@@ -35,6 +35,21 @@ public class ListaEleitores {
         }
     }
 
+    public void imprimirJustificativas() {
+        CelulaEleitores aux;
+        aux = primeiro.proximo;
+
+        if (listaVazia()) {
+            System.out.println("A lista de eleitores está vazia");
+        } else {
+            while (aux != null) {
+                System.out.println(aux.item.getNumTitulo());
+//                System.out.println(aux.item.getNumTitulo());
+                aux = aux.proximo;
+            }
+        }
+    }
+
     public void imprimirDadosEleitores() {
         CelulaEleitores aux;
         aux = primeiro.proximo;
@@ -118,21 +133,20 @@ public class ListaEleitores {
 
     public void exportaArquivo(ListaEleitores lista, File file) throws IOException {
         FileWriter fw = new FileWriter(file, true);
-        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(fw);
         CelulaEleitores aux = lista.primeiro;
 
         while (aux != null) {
-            bw.write(aux.item.getNumTitulo());
+            pw.println(aux.item.getNumTitulo() + "; " + aux.item.getStatus());
             aux = aux.proximo;
-            bw.newLine();
         }
-        bw.close();
+        pw.close();
     }
 
-    public int tamLista(){
+    public int tamLista() {
         int cont = 0;
         CelulaEleitores aux = primeiro.proximo;
-        while (aux != null){
+        while (aux != null) {
             cont++;
             aux = aux.proximo;
         }
